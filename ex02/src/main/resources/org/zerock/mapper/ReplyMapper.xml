@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.zerock.mapper.ReplyMapper">
+	<!-- 등록 -->
+	<insert id="insert">
+		insert into tbl_reply values(seq_reply.nextval,#{BNO},#{REPLY},#{REPLYER},#{REPLYDATE},#{UPDATEDATE})
+	</insert>
+	<!-- 상세보기 -->
+	<select id="get" resultType="org.zerock.domain.ReplyVo">
+		select * from tbl_reply where rno=#{rno}
+	</select>
+	<!-- 리스트 불러오기 -->
+	<select id="getList">
+		select * from tbl_reply where bno=#{bno}
+	</select>
+	<!-- 삭제 -->
+	<delete id="delete">
+		delete tbl_reply where rno=#{rno}
+	</delete>
+	<update id="update">
+		update tbl_reply set reply = #{reply} , replyer = #{replyer} , updatedate = sysdate where rno = #{rno}
+	</update>
+</mapper>
